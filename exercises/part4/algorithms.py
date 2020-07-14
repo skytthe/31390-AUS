@@ -19,7 +19,7 @@ def BFS(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             route = [target]
             while not route[-1] == source:
                 route.append(parents[route[-1]])
@@ -59,7 +59,7 @@ def DFS_low(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             route = [target]
             while not route[-1] == source:
                 route.append(parents[route[-1]])
@@ -99,7 +99,7 @@ def DFS_low_CHRISTOPHER(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             route = [target]
             while not route[-1] == source:
                 route.append(parents[route[-1]])
@@ -107,7 +107,7 @@ def DFS_low_CHRISTOPHER(G, source, target):
             print('\t route: ', route)
             return route
 
-        n = sorted(list(G.adj[v]), reverse=True)  # false
+        n = sorted(list(G.adj[v]), reverse=True)
 
         for i in n:
             if not i in visited:
@@ -138,7 +138,7 @@ def DFS_high(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             route = [target]
             while not route[-1] == source:
                 route.append(parents[route[-1]])
@@ -162,6 +162,45 @@ def DFS_high(G, source, target):
 
     return []
 
+def DFS_high_CHRISTOPHER(G, source, target):
+    q = queue.LifoQueue()
+    visited = set()
+    parents = {}
+
+    q.put(source)
+
+    step = 1
+    while not q.empty():
+        print('step: ', step)
+        v = q.get()
+        visited.add(v)
+        print('\t active node: ', v)
+
+        if v == target:
+            print('\t Goal node found')
+            route = [target]
+            while not route[-1] == source:
+                route.append(parents[route[-1]])
+            route.reverse()
+            print('\t route: ', route)
+            return route
+
+        n = sorted(list(G.adj[v]), reverse=False)
+
+        for i in n:
+            if not i in visited:
+                q.put(i)
+                parents[i] = v
+
+        print('\t queue: ', q.queue)
+        print('\t visited: ', visited)
+        print('\t parents: ', parents)
+
+        step = step + 1
+
+    return []
+
+
 
 def Dijkstra(G, source, target):
     cost = {}
@@ -179,7 +218,7 @@ def Dijkstra(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             print('\t cost: ', visited[v][0])
             route = [target]
             while not route[-1] == source:
@@ -223,7 +262,7 @@ def Greedy(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             route = [target]
             while not route[-1] == source:
                 route.append(parents[route[-1]])
@@ -264,7 +303,7 @@ def Astar(G, source, target):
         print('\t active node: ', v)
 
         if v == target:
-            print('\t Goal node')
+            print('\t Goal node found')
             print('\t cost: ', visited[v][1])
             route = [target]
             while not route[-1] == source:

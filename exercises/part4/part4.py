@@ -17,9 +17,9 @@ if __name__ == "__main__":
     DFS_low(G,0,23)
     print('\n\n')
 
-    print('###################')
-    print('# DFS_christopher #')
-    print('###################')
+    print('#######################')
+    print('# DFS_low_christopher #')
+    print('#######################')
     DFS_low_CHRISTOPHER(G,0,23)
     print('\n\n')
 
@@ -27,6 +27,12 @@ if __name__ == "__main__":
     print('# DFS_high    #')
     print('###############')
     DFS_high(G,0,23)
+    print('\n\n')
+
+    print('########################')
+    print('# DFS_high_christopher #')
+    print('########################')
+    DFS_high_CHRISTOPHER(G,0,23)
     print('\n\n')
 
     print('###############')
@@ -53,7 +59,7 @@ if __name__ == "__main__":
     print('####################')
     print('# Astar            #')
     print('####################')
-    Astar(G,0,5)
+    Astar(G,0,23)
     print('\n')
     print('\nnx implementation results:')
     print('\t', nx.dijkstra_path(G,0,23))
